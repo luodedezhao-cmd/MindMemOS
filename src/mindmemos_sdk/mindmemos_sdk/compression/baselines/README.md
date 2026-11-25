@@ -16,7 +16,18 @@ git -C WildClawBench checkout 56bc20d31ebf5fdee627c781b55a1e4959893bb0
 python -m pip install -r WildClawBench/requirements.txt
 ```
 
-按照 WildClawBench README 准备干净的任务 workspace、fixture 和工具凭据。安装实验镜像并核对 ID：
+按照 WildClawBench README 准备干净的任务 workspace、fixture 和工具凭据。
+
+实验镜像是 WildClawBench 官方的 OpenClaw 镜像 `wildclawbench-ubuntu:v1.3`，从 HuggingFace 下载并加载：
+
+```bash
+pip install -U "huggingface_hub[cli]"
+hf download internlm/WildClawBench Images/wildclawbench-ubuntu_v1.3.tar --repo-type dataset --local-dir .
+docker load -i Images/wildclawbench-ubuntu_v1.3.tar
+docker image inspect wildclawbench-ubuntu:v1.3 --format '{{.Id}}'
+```
+
+最后一条输出的镜像 ID 应为：
 
 ```text
 sha256:60eec8752cb597e180780ff08d7569c1892c169521f1f2b069c2efeb006a4078
