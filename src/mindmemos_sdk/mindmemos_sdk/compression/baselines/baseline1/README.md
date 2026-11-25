@@ -2,15 +2,17 @@
 
 ## 代码来源
 
-Agent 与任务执行采用 [WildClawBench](https://github.com/InternLM/WildClawBench/tree/56bc20d31ebf5fdee627c781b55a1e4959893bb0) 的原生 OpenClaw runner 和 `eval/run_batch.py`。固定源码、镜像及准备方式见[公共说明](../README.md)。
+Baseline 1 使用上游 [OpenClaw](https://github.com/openclaw/openclaw)（固定版本 `2026.3.11`）作为 Agent，沿用其原生模型调用、工具循环和上下文管理逻辑，没有加入我们自己的压缩策略，也没有修改原生压缩的触发条件或摘要逻辑。
 
-本目录的 `observer/install.py`、`meter.mjs`、`metrics.py` 和 `model_registration.py` 原样复制自实验的 `host_observation` 代码；`vision_registration.json` 保存同一 GPT-5.5 的图像能力注册描述。逐文件来源与 SHA-256 见 [source_manifest.json](source_manifest.json)。
+任务接入与执行采用 [WildClawBench](https://github.com/InternLM/WildClawBench/tree/56bc20d31ebf5fdee627c781b55a1e4959893bb0) 的 OpenClaw runner 和 `eval/run_batch.py`。本目录提供实验运行与计量封装，不包含一份重写的 OpenClaw 实现。固定源码、镜像及准备方式见[公共说明](../README.md)。
+
+本目录的 `observer/install.py`、`meter.mjs`、`metrics.py` 和 `model_registration.py` 原样复制自我们实验中的 `host_observation` 计量与模型接入代码，并非 OpenClaw 上游自带文件；`vision_registration.json` 保存同一 GPT-5.5 的图像能力注册描述。逐文件来源与 SHA-256 见 [source_manifest.json](source_manifest.json)。
 
 ## 与来源代码的区别
 
 [agent.py](agent.py) 从原 `host_observation/worker.py` 提取 Agent 接入逻辑，[run.py](run.py) 使用共享可移植入口。改动是将本机固定目录改为 `--benchmark-root`、`--output` 和 `--env-file`，并将计量结果保存在每项任务输出目录。
 
-原生主模型调用、工具执行与评分函数复用 WildClawBench。观测钩子记录原始 usage 和原生 compaction 事件，不改写模型消息、不主动摘要。保留实验使用的 GPT-5.5 图像能力注册：图像工具使用 `openrouter-vision/openai/gpt-5.5`，仍是同一模型。
+OpenClaw 的原生执行逻辑保持不变，任务执行与评分函数复用 WildClawBench。实验封装会在一次性容器的 OpenClaw/Pi 运行文件中插入计量钩子，记录原始 usage、耗时和原生 compaction 事件；钩子不改写模型消息、请求参数或返回流，也不主动摘要。保留实验使用的 GPT-5.5 图像能力注册：图像工具使用 `openrouter-vision/openai/gpt-5.5`，仍是同一模型。因此这里的“原生 baseline”指未修改 Agent 和压缩策略，不能表述为运行文件逐字节完全未改。
 
 宿主 compaction 保留默认配置；“无压缩”指该任务集合的实验轨迹没有实际应用原生摘要，不表示强制关闭所有宿主上下文管理。新执行时仍应检查计量中的 `native_auto_compaction_started` 和 `native_auto_compaction_succeeded`。
 
