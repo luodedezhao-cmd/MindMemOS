@@ -94,7 +94,11 @@ def test_snapshot_request_and_result_contract(inputs, upstream, mode):
     assert headers["Authorization"] == "Bearer private-key"
     prompt = request["messages"][0]
     assert prompt["role"] == "user"
-    title = "INCREMENTAL MEMORY DELTA" if mode == "incremental" else "FULL MEMORY CONSOLIDATION"
+    title = (
+        "WILDCLAWBENCH INCREMENTAL MEMORY DELTA"
+        if mode == "incremental"
+        else "WILDCLAWBENCH FULL MEMORY CONSOLIDATION"
+    )
     assert prompt["content"].splitlines()[0] == title
     assert "任务 {{ history }}" in prompt["content"]
     assert "old {{ task }}\n\nearlier claim" in prompt["content"]

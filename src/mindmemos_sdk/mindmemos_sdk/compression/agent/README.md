@@ -31,7 +31,7 @@ source/src/context_compression/
 
 上层 [compression SDK](../README.md) 提供 `compress_memory()` 单次压缩操作。本目录补齐 Agent 一侧的历史管理、触发、异步调度与结果应用。
 
-为保留原实验的取消、超时和日志语义，这份复现入口调用冻结源码中的压缩器，不改接 SDK 的 `compress_memory()`。两者有相同来源的增量／全量 prompt，但运行接口与取消能力不同。这里也不需要启动 MindMemOS 服务。
+为保留原实验的取消、超时和日志语义，这份复现入口调用冻结源码中的压缩器，不改接 SDK 的 `compress_memory()`。两者的增量／全量 prompt 逐字节相同（SDK 的 `prompts/*_prompt.txt` 与本目录 `a_*_prompt.txt` SHA-256 一致），构造的请求正文相同；运行接口与取消能力不同。这里也不需要启动 MindMemOS 服务。
 
 ## 相对两个 baseline 的改动
 
