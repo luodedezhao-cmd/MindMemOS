@@ -1,0 +1,396 @@
+{
+  "source_files": [
+    {
+      "path": "source/src/agents/openclaw/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/src/agents/openclaw/__init__.py",
+      "source_sha256": "217eb061a7e3a12aec51725dde6b838353cd040102d708ff9a52cf761564de50",
+      "packaged_sha256": "217eb061a7e3a12aec51725dde6b838353cd040102d708ff9a52cf761564de50",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/agents/openclaw/model_registration.py",
+      "source": "WildClawBench ADyn frozen runtime/src/agents/openclaw/model_registration.py",
+      "source_sha256": "dca46af5cdc4296c9188622ec25e48f9ea657d3c896b6a16e04a9ea44fb4d28b",
+      "packaged_sha256": "dca46af5cdc4296c9188622ec25e48f9ea657d3c896b6a16e04a9ea44fb4d28b",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/agents/openclaw/runner.py",
+      "source": "WildClawBench ADyn frozen runtime/src/agents/openclaw/runner.py",
+      "source_sha256": "c8285f7688c0adb0f355c474ae4c2a648db0b652a87cb5c049c8a1038bfb100b",
+      "packaged_sha256": "c8285f7688c0adb0f355c474ae4c2a648db0b652a87cb5c049c8a1038bfb100b",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/__init__.py",
+      "source_sha256": "d1df896b6a2896f097c044d5d4873bd6bbfc4680f9099b11d9677c315998799c",
+      "packaged_sha256": "d1df896b6a2896f097c044d5d4873bd6bbfc4680f9099b11d9677c315998799c",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/a_full_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/a_full_prompt.txt",
+      "source_sha256": "5952549419973645b39acf7691d5c391562996fb2bbd73a40fad88a312cb2075",
+      "packaged_sha256": "5952549419973645b39acf7691d5c391562996fb2bbd73a40fad88a312cb2075",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/a_incremental_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/a_incremental_prompt.txt",
+      "source_sha256": "08a1428b693faf2c1730153117b4000e4d4397ec526a24c920d0f0ad34fe6346",
+      "packaged_sha256": "08a1428b693faf2c1730153117b4000e4d4397ec526a24c920d0f0ad34fe6346",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/async_core.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/async_core.py",
+      "source_sha256": "ae600aed5ccaf8bd2a3b2e5348ebbdbf2bf212ee8b455e85f98df55cdd8b500d",
+      "packaged_sha256": "ae600aed5ccaf8bd2a3b2e5348ebbdbf2bf212ee8b455e85f98df55cdd8b500d",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/audit.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/audit.py",
+      "source_sha256": "40c7987ed082e22600bf1e6052d26d7cea833d288a70207a1fee19687386dfc2",
+      "packaged_sha256": "40c7987ed082e22600bf1e6052d26d7cea833d288a70207a1fee19687386dfc2",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/boundary_prompt_v1.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/boundary_prompt_v1.txt",
+      "source_sha256": "c7cc506724a50f5e2fe3108577552b4a074f78b440213774ec72ab588774e600",
+      "packaged_sha256": "c7cc506724a50f5e2fe3108577552b4a074f78b440213774ec72ab588774e600",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/cancellation.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/cancellation.py",
+      "source_sha256": "2a49146153ab183fd415a631f669192757cbd1e98cd3027f41410dbc2ce618d2",
+      "packaged_sha256": "2a49146153ab183fd415a631f669192757cbd1e98cd3027f41410dbc2ce618d2",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/compressor.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/compressor.py",
+      "source_sha256": "e152b93ba4af7d7ddac9e8d9b30e133e5ce4d19031e5380e26d8711daa8b3248",
+      "packaged_sha256": "e152b93ba4af7d7ddac9e8d9b30e133e5ce4d19031e5380e26d8711daa8b3248",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/core.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/core.py",
+      "source_sha256": "787c4681d5926fc0512c21fb311bd208990d9bc3649f88cb82c21f2a83bf7388",
+      "packaged_sha256": "787c4681d5926fc0512c21fb311bd208990d9bc3649f88cb82c21f2a83bf7388",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/full_consolidation_prompt_v3.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/full_consolidation_prompt_v3.txt",
+      "source_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
+      "packaged_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/incremental_boundary_prompt_v3.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/incremental_boundary_prompt_v3.txt",
+      "source_sha256": "5bc95930fa1ce19c438f01ac10575c03b600bb6f9cd3433833bdb7fddf8e4c8a",
+      "packaged_sha256": "5bc95930fa1ce19c438f01ac10575c03b600bb6f9cd3433833bdb7fddf8e4c8a",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/incremental_boundary_prompt_v4.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/incremental_boundary_prompt_v4.txt",
+      "source_sha256": "d1cfd1996196de7717667a78c702a5df0330836b0b4fafa36599d88bedb94bfd",
+      "packaged_sha256": "d1cfd1996196de7717667a78c702a5df0330836b0b4fafa36599d88bedb94bfd",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/install_bridge.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/install_bridge.py",
+      "source_sha256": "a84c368ce7898952c07ca64f97a67010ec0d7ab7402cbaf8e9bc920f8e3a9345",
+      "packaged_sha256": "a84c368ce7898952c07ca64f97a67010ec0d7ab7402cbaf8e9bc920f8e3a9345",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/integration.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/integration.py",
+      "source_sha256": "14f205ae31223629ee0e63e08c32b77460c304d1032c460a838cc7e98b1fc2e6",
+      "packaged_sha256": "14f205ae31223629ee0e63e08c32b77460c304d1032c460a838cc7e98b1fc2e6",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/joint_prompt_v1.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/joint_prompt_v1.txt",
+      "source_sha256": "4e78abbf4017876c63d042851b788a836a27cebf6390d9ec8120e2dec9f0fdb0",
+      "packaged_sha256": "4e78abbf4017876c63d042851b788a836a27cebf6390d9ec8120e2dec9f0fdb0",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/joint_prompt_v2.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/joint_prompt_v2.txt",
+      "source_sha256": "8ec7ab2468618d3fe6cfd33e4fe931f00095e27c7b3043bb8389d7faaea4946a",
+      "packaged_sha256": "8ec7ab2468618d3fe6cfd33e4fe931f00095e27c7b3043bb8389d7faaea4946a",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/model_probe.mjs",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/model_probe.mjs",
+      "source_sha256": "ce9a240f4d65d180c974ee461bf2f3cb00aaf19eeb914be9843d4252c76f1db5",
+      "packaged_sha256": "ce9a240f4d65d180c974ee461bf2f3cb00aaf19eeb914be9843d4252c76f1db5",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/openclaw_bridge.mjs",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/openclaw_bridge.mjs",
+      "source_sha256": "d2e850a359bef7ea112b1d675116b7d504da4d93e24ffff9db32269f6c3b7eed",
+      "packaged_sha256": "d2e850a359bef7ea112b1d675116b7d504da4d93e24ffff9db32269f6c3b7eed",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/p0_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p0_prompt.txt",
+      "source_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
+      "packaged_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/p1_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p1_prompt.txt",
+      "source_sha256": "02127d8bb4474267af03460a3fe2d90a2f1900bd948226176d742b9b39ffc091",
+      "packaged_sha256": "02127d8bb4474267af03460a3fe2d90a2f1900bd948226176d742b9b39ffc091",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/p_mini_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p_mini_prompt.txt",
+      "source_sha256": "7df2cc22bb5594dc41266c3db605114c53175de565939d8452410fb01236a390",
+      "packaged_sha256": "7df2cc22bb5594dc41266c3db605114c53175de565939d8452410fb01236a390",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/p_neutral_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p_neutral_prompt.txt",
+      "source_sha256": "9cdd685a4b09b5ff51ca693965c05d82cefd0a0700dc8a1a6b39e5211b092d61",
+      "packaged_sha256": "9cdd685a4b09b5ff51ca693965c05d82cefd0a0700dc8a1a6b39e5211b092d61",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/prompts.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/prompts.py",
+      "source_sha256": "2548c45b763ca6a6a4e283611c68bc91ae3bf22cac3329257f0173113844bfcb",
+      "packaged_sha256": "2548c45b763ca6a6a4e283611c68bc91ae3bf22cac3329257f0173113844bfcb",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/proxy.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/proxy.py",
+      "source_sha256": "b081c4b084d15d231cc471b35d76b4ddfd5d41c52d72ef2e8b1ef42f6716ca85",
+      "packaged_sha256": "b081c4b084d15d231cc471b35d76b4ddfd5d41c52d72ef2e8b1ef42f6716ca85",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/report.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/report.py",
+      "source_sha256": "107ea10bd4d6e53f422d0c59be749833cd45e6a3b0a82781d890c1646a8f06db",
+      "packaged_sha256": "107ea10bd4d6e53f422d0c59be749833cd45e6a3b0a82781d890c1646a8f06db",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/transport.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/transport.py",
+      "source_sha256": "23b7ddc505b6ae8c4132bb43977b949083522a0764270469a50e8d496d9ca1e4",
+      "packaged_sha256": "23b7ddc505b6ae8c4132bb43977b949083522a0764270469a50e8d496d9ca1e4",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/context_compression/types.py",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/types.py",
+      "source_sha256": "ecec965f9586fb06560dcbdefc160b5389726845e51bbf9a3c1acfd8edd292cf",
+      "packaged_sha256": "ecec965f9586fb06560dcbdefc160b5389726845e51bbf9a3c1acfd8edd292cf",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/host_observation/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/src/host_observation/__init__.py",
+      "source_sha256": "d7f7606cccb02b2b6423e0ab398cc99418b6ae54ba775c9a08f4817c887eea05",
+      "packaged_sha256": "d7f7606cccb02b2b6423e0ab398cc99418b6ae54ba775c9a08f4817c887eea05",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/host_observation/install.py",
+      "source": "WildClawBench ADyn frozen runtime/src/host_observation/install.py",
+      "source_sha256": "fe820a856dae093e4bfb6b7038acb397f17fd9959314e022145766984707132a",
+      "packaged_sha256": "fe820a856dae093e4bfb6b7038acb397f17fd9959314e022145766984707132a",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/host_observation/meter.mjs",
+      "source": "WildClawBench ADyn frozen runtime/src/host_observation/meter.mjs",
+      "source_sha256": "0f354d3bb8fc9baedafa813ed282a73548fb3d1f0a6492ef7e093df96b235ba7",
+      "packaged_sha256": "0f354d3bb8fc9baedafa813ed282a73548fb3d1f0a6492ef7e093df96b235ba7",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/host_observation/metrics.py",
+      "source": "WildClawBench ADyn frozen runtime/src/host_observation/metrics.py",
+      "source_sha256": "7d25b62c0fdfeb7f38305f8b213031c68e0dc91771ee332b1bd45d787a72070f",
+      "packaged_sha256": "7d25b62c0fdfeb7f38305f8b213031c68e0dc91771ee332b1bd45d787a72070f",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/ours_observation/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/src/ours_observation/__init__.py",
+      "source_sha256": "2fa181deabae4f14f93953de0bc6c922ffe24002bff34d047b71b4809d114df2",
+      "packaged_sha256": "2fa181deabae4f14f93953de0bc6c922ffe24002bff34d047b71b4809d114df2",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/ours_observation/install.py",
+      "source": "WildClawBench ADyn frozen runtime/src/ours_observation/install.py",
+      "source_sha256": "048d38a10281b84c6ff4f9f3a3fccdfc94e3d199f80c657149a281664fe3849d",
+      "packaged_sha256": "048d38a10281b84c6ff4f9f3a3fccdfc94e3d199f80c657149a281664fe3849d",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/ours_observation/meter.mjs",
+      "source": "WildClawBench ADyn frozen runtime/src/ours_observation/meter.mjs",
+      "source_sha256": "6abb6bbd3bad357c7db3ea14640815ef974f4d68689717111e6426f2da5820d4",
+      "packaged_sha256": "6abb6bbd3bad357c7db3ea14640815ef974f4d68689717111e6426f2da5820d4",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/src/ours_observation/metrics.py",
+      "source": "WildClawBench ADyn frozen runtime/src/ours_observation/metrics.py",
+      "source_sha256": "f451e24291a9311d140069bb6adfcf167ac594ec628c9290e958096ca5556a08",
+      "packaged_sha256": "f451e24291a9311d140069bb6adfcf167ac594ec628c9290e958096ca5556a08",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "packaged_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_async_core.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_async_core.py",
+      "source_sha256": "889e2a01d25defbc59065415197608d269588e2a27d2c33d59e98bbbaadd5b73",
+      "packaged_sha256": "889e2a01d25defbc59065415197608d269588e2a27d2c33d59e98bbbaadd5b73",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_async_transport.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_async_transport.py",
+      "source_sha256": "8206f000ae87f05b57a43cdfa37c851cb15cadab4509357d154070f70822cbda",
+      "packaged_sha256": "8206f000ae87f05b57a43cdfa37c851cb15cadab4509357d154070f70822cbda",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_audit.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_audit.py",
+      "source_sha256": "794d817d0ba5e0a93a35c33c3c1cc69272b34f95f69cb32a34553b2219aaeb93",
+      "packaged_sha256": "794d817d0ba5e0a93a35c33c3c1cc69272b34f95f69cb32a34553b2219aaeb93",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_cancellation.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_cancellation.py",
+      "source_sha256": "25cd088fe52ce2caedcba7d6348368b4b21373477dd8d2b92df81a75649846fc",
+      "packaged_sha256": "25cd088fe52ce2caedcba7d6348368b4b21373477dd8d2b92df81a75649846fc",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_core.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_core.py",
+      "source_sha256": "17c73b4325c71b18f721dd4018ab27295eff61723433f79e04e6834ae332aa3b",
+      "packaged_sha256": "01ad7b32d03013c9f4c142879046d09e2baf5eff5d74038dde56c29e2fa2b92e",
+      "change": "One archival v1 research-plan test is explicitly skipped; no ADyn runtime behavior test changed."
+    },
+    {
+      "path": "source/tests/context_compression/test_dual_a_async.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_dual_a_async.py",
+      "source_sha256": "38647085bd8eebbb8ce599873ce80641f0f53a9f8a079049d2dd902a457f7ebd",
+      "packaged_sha256": "38647085bd8eebbb8ce599873ce80641f0f53a9f8a079049d2dd902a457f7ebd",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_dynamic_thresholds.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_dynamic_thresholds.py",
+      "source_sha256": "05478aa1d060b34e1222d65d83dcc07beef4b02328a74af79464e17962cdb47d",
+      "packaged_sha256": "05478aa1d060b34e1222d65d83dcc07beef4b02328a74af79464e17962cdb47d",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_log_finalization.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_log_finalization.py",
+      "source_sha256": "6a8173ea249ef0324fb32d7f29d384c51f984291dd79db7a84eafdf75d55acaf",
+      "packaged_sha256": "6a8173ea249ef0324fb32d7f29d384c51f984291dd79db7a84eafdf75d55acaf",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/context_compression/test_safety.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_safety.py",
+      "source_sha256": "a4209e6ad9f57758b4bf8ce8fa81482b3dee5441bfba321010d1351663378cc6",
+      "packaged_sha256": "b6295c6e9c007b86ca5492a941c8f69bd59841f513b1a89bab0e496781373efc",
+      "change": "Remove trailing blank line only; test behavior unchanged."
+    },
+    {
+      "path": "source/tests/context_compression/test_transport.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_transport.py",
+      "source_sha256": "106edb758ffbbacd4b746070c8285e6d9629b0138ebfb49ecb5475df4689b3bc",
+      "packaged_sha256": "87448912e193fb17e75b6d44c046ab6a31d93458893d320b4092de2048524cae",
+      "change": "One archival v1 research-plan test is explicitly skipped; no ADyn runtime behavior test changed."
+    },
+    {
+      "path": "source/tests/host_observation/fixed_clock.mjs",
+      "source": "WildClawBench ADyn frozen runtime/tests/host_observation/fixed_clock.mjs",
+      "source_sha256": "b1b482267008792e522482552747a0739dc69a75bafc3b84207602a7e2679d0f",
+      "packaged_sha256": "b1b482267008792e522482552747a0739dc69a75bafc3b84207602a7e2679d0f",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/ours_observation/__init__.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/ours_observation/__init__.py",
+      "source_sha256": "40e2b62596193da2041a3995d81c896ffa923d6948334caa5d8fddda104ff962",
+      "packaged_sha256": "40e2b62596193da2041a3995d81c896ffa923d6948334caa5d8fddda104ff962",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/ours_observation/test_metrics.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/ours_observation/test_metrics.py",
+      "source_sha256": "64ba7dddc1e2cc86f875ff537e5cbccae8539cc5fd1d7d8affb650bc5efb5285",
+      "packaged_sha256": "64ba7dddc1e2cc86f875ff537e5cbccae8539cc5fd1d7d8affb650bc5efb5285",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "source/tests/ours_observation/dual_a_async_preflight.py",
+      "source": "WildClawBench ADyn frozen runtime/tests/ours_observation/dual_a_async_preflight.py",
+      "source_sha256": "c16b6a26e62310cc2aaed6410706211e0db4422aed5c6501355ce98778eceac3",
+      "packaged_sha256": "ae0b99d096e2d5fcd427d30cd244cc2f1d86f8c4e21d239f35e180dd954f326b",
+      "change": "Portable paths, loopback NO_PROXY for the offline Python fixture, extracted audit-helper import, and Qwen model/reasoning assertions. Runtime code unchanged."
+    }
+  ],
+  "config_source": "compression and native_model fields from the original ADyn execution settings; no credentials or batch paths included",
+  "runtime_identity": "Copied runtime files match all three frozen sources used for the compared ADyn tasks.",
+  "packaging_files": [
+    "run.py",
+    "agent.py",
+    "bootstrap.py",
+    "README.md",
+    "config.json",
+    "native_model.json",
+    "source/tests/ours_observation/audit_helpers.py",
+    "tests/container_smoke.py",
+    "source/conftest.py"
+  ],
+  "note": "Runtime source is unchanged; portable launcher replaces fixed batch paths and scheduling metadata."
+}

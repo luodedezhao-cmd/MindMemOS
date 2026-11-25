@@ -2,6 +2,8 @@
 
 ## OpenClaw experiment baselines
 
+Our [ADyn Agent implementation](agent/README.md) includes independent history management,
+dynamic thresholds, asynchronous compression and snapshot application, with its original runtime source.
 The standalone experiment code is in [Baseline 1: native execution without applied compression](baselines/baseline1/README.md)
 and [Baseline 2: synchronous full compression at 16,384 estimated tokens](baselines/baseline2/README.md).
 Each directory documents its source, packaging changes, models and execution parameters.

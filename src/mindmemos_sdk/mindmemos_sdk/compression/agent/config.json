@@ -1,0 +1,14 @@
+{
+  "method": "dual_a",
+  "execution_mode": "async",
+  "dynamic_thresholds": true,
+  "trigger_tokens": 8192,
+  "full_trigger_tokens": 16384,
+  "keep_recent_groups": 1,
+  "timeout_seconds": 240,
+  "retry_after_steps": 1,
+  "compressor_model": "qwen/qwen3.5-122b-a10b",
+  "compressor_reasoning": {
+    "effort": "high"
+  }
+}
