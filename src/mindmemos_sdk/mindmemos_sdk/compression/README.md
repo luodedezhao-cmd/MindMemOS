@@ -1,5 +1,13 @@
 # Working-memory compression
 
+## OpenClaw experiment baselines
+
+The standalone experiment code is in [Baseline 1: native execution without applied compression](baselines/baseline1/README.md)
+and [Baseline 2: synchronous full compression at 16,384 estimated tokens](baselines/baseline2/README.md).
+Each directory documents its source, packaging changes, models and execution parameters.
+The shared [31-task list](task_list_31.md) is kept in this compression directory.
+These harness tools are separate from the SDK API described below.
+
 `mindmemos_sdk.compression.compress_memory()` compresses one snapshot of an agent's history through
 an OpenAI-compatible Chat Completions endpoint. It returns the complete summary in one blocking call,
 without streaming, automatic retries, or stored session state. Inputs are not modified.

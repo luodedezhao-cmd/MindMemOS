@@ -1,0 +1,52 @@
+{
+  "source_files": [
+    {
+      "path": "native_sync_full.py",
+      "source": "WildClawBench src/agents/openclaw/native_sync_full.py",
+      "source_sha256": "c346cc1da5a2945d1c2a248434f6c16d323c2b9273306daf0ca96abc2144a970",
+      "packaged_sha256": "c346cc1da5a2945d1c2a248434f6c16d323c2b9273306daf0ca96abc2144a970",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "native_sync_full.mjs",
+      "source": "WildClawBench src/agents/openclaw/native_sync_full.mjs",
+      "source_sha256": "6d1a13330b833615502540f5e698eb0d58c00deb6d6516a9507e3f6e19c6866f",
+      "packaged_sha256": "6d1a13330b833615502540f5e698eb0d58c00deb6d6516a9507e3f6e19c6866f",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "native_sync_full_accounting.mjs",
+      "source": "WildClawBench src/agents/openclaw/native_sync_full_accounting.mjs",
+      "source_sha256": "5c2eb9fb37d80ebeda8cd81422c298931f442b7e02d238a2a8d3b1d572ac9b6e",
+      "packaged_sha256": "5c2eb9fb37d80ebeda8cd81422c298931f442b7e02d238a2a8d3b1d572ac9b6e",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "model_probe.mjs",
+      "source": "WildClawBench context_compression/model_probe.mjs",
+      "source_sha256": "ce9a240f4d65d180c974ee461bf2f3cb00aaf19eeb914be9843d4252c76f1db5",
+      "packaged_sha256": "ce9a240f4d65d180c974ee461bf2f3cb00aaf19eeb914be9843d4252c76f1db5",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "qwen_transport.py",
+      "source": "WildClawBench analysis/openclaw_qwen_rerun_v1/qwen_transport.py",
+      "source_sha256": "c1fa413babe87e2addb65c230f8367ff75c9bd200ee83bbdd5c3967928659c5b",
+      "packaged_sha256": "bb1d723b55f4de261d725b7f6c0190f6251e326cafd77492d1f879dffec30484",
+      "change": "Only replace helper import with relative transport_helpers import; request routing and transport unchanged."
+    },
+    {
+      "path": "transport_helpers.py",
+      "source": "WildClawBench analysis/openclaw_sync_full_baseline_v1/yibu_transport.py",
+      "source_sha256": "c33db46ec27f8970d758ee1d355e6a64fa044339a4084e3307b81ebb269cd2e8",
+      "packaged_sha256": "6c416df658550eba00bb6b896b1f2a9162b7b8703a056cf5555c23d1101fc686",
+      "change": "Extract SUMMARY_SYSTEM, category, usage_from_response and summarize_usage unchanged; omit unrelated relay."
+    }
+  ],
+  "packaging_files": [
+    "run.py",
+    "agent.py",
+    "README.md"
+  ],
+  "note": "Packaging adapters are new; native compression and observation sources are copied as listed."
+}

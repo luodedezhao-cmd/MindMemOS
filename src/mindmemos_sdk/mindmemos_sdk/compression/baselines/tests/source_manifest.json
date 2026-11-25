@@ -1,0 +1,10 @@
+{
+  "source_files": [
+    {
+      "path": "native_probe.mjs",
+      "source": "WildClawBench analysis/openclaw_sync_full_baseline_v2/probe.mjs",
+      "sha256": "0495f8d2572396efac894fdc5dc40ec97b1a3987963a0033f94ae05475011b43",
+      "change": "byte-identical copy"
+    }
+  ]
+}

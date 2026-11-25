@@ -1,0 +1,29 @@
+{
+  "repository": "https://github.com/InternLM/WildClawBench",
+  "commit": "56bc20d31ebf5fdee627c781b55a1e4959893bb0",
+  "image_id": "sha256:60eec8752cb597e180780ff08d7569c1892c169521f1f2b069c2efeb006a4078",
+  "openclaw_version": "2026.3.11",
+  "pi_version": "0.57.1",
+  "source_sha256": {
+    "eval/run_batch.py": "28c1eed56079817063660c144f3c20f13f199c51c82b13a9a7dc62c5044871ac",
+    "src/agents/base.py": "70d69c104e8d0bb7981b67c0772aa411ec164d0fec65b368492801069cef11de",
+    "src/agents/claudecode/__init__.py": "f5be5c631bd537955d6ec411c1bfea0a7fdfd98bef7c3bff2628df2027c41d97",
+    "src/agents/claudecode/runner.py": "d1e1f4039c3ecae9cf157e31fe4c3e3b4e8070a2b0e06dd4a6505eb6d157356e",
+    "src/agents/claudecode/transcript.py": "8ac6470b0ade6018aebe358add6530f6a676654a3c39d32e5a35946f0aaa578a",
+    "src/agents/codex/__init__.py": "21ee45d80ea1a616c618753e852605acaea4d19da619b96d433a3957bb582013",
+    "src/agents/codex/backend.py": "8d606ec25b46880f2abcf1a8a3214fdd394784f12ca92d0b3962893af3f9bdd5",
+    "src/agents/codex/runner.py": "c2263167c90dce78996753dff745d8d96e6f783bd1f5496d2996f8658252c207",
+    "src/agents/hermesagent/__init__.py": "16035358ee7db4b14939e095c208efe5edd5a42096ea95ccfbdc8a576c38131b",
+    "src/agents/hermesagent/bench_runner.py": "315a84212cd2814192eac750205e94c2ffd8b49e8b128bb7f4ee8ecbdd742093",
+    "src/agents/hermesagent/compat_transcript.py": "4c57fd3bf8f2a9441bfecad57c103538fda371348e6c2c7ae3a681753530ce35",
+    "src/agents/hermesagent/runner.py": "b622bcd8398c73e8b58361e7119b4377ae4af032079cf0e17eff7952f82083fd",
+    "src/agents/openclaw/__init__.py": "217eb061a7e3a12aec51725dde6b838353cd040102d708ff9a52cf761564de50",
+    "src/agents/openclaw/runner.py": "c36f03dbfa3ad48cab6a0b3057ba92cac0d098e9a1559c173f7f36ba3d75c9f8",
+    "src/utils/cli_args.py": "22864b5c29e84b495be4b43a7644d47b3aa7c39ad04a5e63a94a870a072df3da",
+    "src/utils/docker_utils.py": "f239da216f35010d23a4f64339b48d57afd2efa5915f27dd21b589c3a740f23f",
+    "src/utils/endpoint_utils.py": "8efc818feb816a50df197ad6b71d28ba0e349ba8cad2636eab96a68960feb263",
+    "src/utils/grading.py": "84f5e04a72476bafd81956c3a1ff691b37dfdcf1c2d3b612f3045ab5ff16d1da",
+    "src/utils/task_parser.py": "d43dfa35bdff7905bdfc2340087779105d0385740c3c324481ea7567effee908",
+    "src/utils/transcript_loader.py": "13acf6f69db952452278b441e1a0a1f62ca37d534faf0c6bd96d2bfe6d757f50"
+  }
+}

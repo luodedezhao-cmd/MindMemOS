@@ -1,0 +1,253 @@
+{
+  "selection": "Tasks in our experiment with at least one successfully applied compression; the same 31 tasks are used for all conditions.",
+  "tasks": [
+    {
+      "index": 1,
+      "task_id": "03_Social_Interaction_task_1_meeting_negotiation",
+      "task": "tasks/03_Social_Interaction/03_Social_Interaction_task_1_meeting_negotiation.md",
+      "task_sha256": "8749d27ac82ceb3ffdca2a6761c5e8566450f21fd097a7d14d4ebeafacb65127",
+      "timeout_seconds": 600,
+      "label": "会议协商"
+    },
+    {
+      "index": 2,
+      "task_id": "01_Productivity_Flow_task_1_arxiv_digest",
+      "task": "tasks/01_Productivity_Flow/01_Productivity_Flow_task_1_arxiv_digest.md",
+      "task_sha256": "56e9e781134b2196098d242b19eb13cb37b2a2653f101e074e23c53517ec5d4a",
+      "timeout_seconds": 1200,
+      "label": "arXiv 论文摘要"
+    },
+    {
+      "index": 3,
+      "task_id": "01_Productivity_Flow_task_10_pdf_digest",
+      "task": "tasks/01_Productivity_Flow/01_Productivity_Flow_task_10_pdf_digest.md",
+      "task_sha256": "8b14eb32b1c9bd71e56447cd6b7f5eed310918be282fbc3bdf36af613829ce5b",
+      "timeout_seconds": 900,
+      "label": "PDF 整理"
+    },
+    {
+      "index": 4,
+      "task_id": "03_Social_Interaction_task_2_chat_action_extraction",
+      "task": "tasks/03_Social_Interaction/03_Social_Interaction_task_2_chat_action_extraction.md",
+      "task_sha256": "e88831057341a37e49a98956ae6697dd2ce1e288413671ad10f17ac8f5685774",
+      "timeout_seconds": 300,
+      "label": "聊天待办提取"
+    },
+    {
+      "index": 5,
+      "task_id": "03_Social_Interaction_task_4_chat_thread_consolidation",
+      "task": "tasks/03_Social_Interaction/03_Social_Interaction_task_4_chat_thread_consolidation.md",
+      "task_sha256": "e9de5132e6c05856fdc4ae46d9f7353472309bbce3b9097c8cef520422c2b81a",
+      "timeout_seconds": 600,
+      "label": "聊天线程整理"
+    },
+    {
+      "index": 6,
+      "task_id": "02_Code_Intelligence_task_10_acad_homepage_zh",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_10_acad_homepage_zh.md",
+      "task_sha256": "b3c59a5b21e9e09b249de77fef3ac6a1afb361560386c433583b6d7580048a37",
+      "timeout_seconds": 1200,
+      "label": "学术主页"
+    },
+    {
+      "index": 7,
+      "task_id": "04_Search_Retrieval_task_2_conflicting_handling",
+      "task": "tasks/04_Search_Retrieval/04_Search_Retrieval_task_2_conflicting_handling.md",
+      "task_sha256": "ae2e281b3df9640d0732e633335a61d8f40528b6025563c11957331cb9e30e45",
+      "timeout_seconds": 900,
+      "label": "冲突信息检索"
+    },
+    {
+      "index": 8,
+      "task_id": "01_Productivity_Flow_task_3_bibtex",
+      "task": "tasks/01_Productivity_Flow/01_Productivity_Flow_task_3_bibtex.md",
+      "task_sha256": "e8c5e8a860122049db8fcf7fd5e635ad58691cdc3311969397583c1aa7e45c72",
+      "timeout_seconds": 900,
+      "label": "BibTeX 整理"
+    },
+    {
+      "index": 9,
+      "task_id": "01_Productivity_Flow_task_4_2022_conference_papers",
+      "task": "tasks/01_Productivity_Flow/01_Productivity_Flow_task_4_2022_conference_papers.md",
+      "task_sha256": "cf9907c59a34a8ffbd72e00bfc414f93b09a1bfded6600a366672700070861bd",
+      "timeout_seconds": 1200,
+      "label": "2022 会议论文"
+    },
+    {
+      "index": 10,
+      "task_id": "01_Productivity_Flow_task_5_wikipedia_biography",
+      "task": "tasks/01_Productivity_Flow/01_Productivity_Flow_task_5_wikipedia_biography.md",
+      "task_sha256": "7d15a3f891265cecbe5aaa86750af11f30cf302ddd853209d6f4e54f8c41fd24",
+      "timeout_seconds": 900,
+      "label": "维基人物简介"
+    },
+    {
+      "index": 11,
+      "task_id": "01_Productivity_Flow_task_9_scp_crawl",
+      "task": "tasks/01_Productivity_Flow/01_Productivity_Flow_task_9_scp_crawl.md",
+      "task_sha256": "56293a31e49c8e5042eb66c0896374227339fcd3045d772398dfa259a96c64fc",
+      "timeout_seconds": 1200,
+      "label": "SCP 抓取"
+    },
+    {
+      "index": 12,
+      "task_id": "02_Code_Intelligence_task_11_resume_homepage_zh",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_11_resume_homepage_zh.md",
+      "task_sha256": "338cda2bca475abf0c68e1364299a790a0285f75d06ecf18f85dabfaed9f54f7",
+      "timeout_seconds": 1200,
+      "label": "简历主页"
+    },
+    {
+      "index": 13,
+      "task_id": "02_Code_Intelligence_task_12_connect_the_dots_hard_zh",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_12_connect_the_dots_hard_zh.md",
+      "task_sha256": "9578b20ac8dcbaa73f44aa54e51ccce5e6abdf8e609e44cd1831500cd56f78f7",
+      "timeout_seconds": 1200,
+      "label": "困难连线游戏"
+    },
+    {
+      "index": 14,
+      "task_id": "02_Code_Intelligence_task_1_sam3_inference",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_1_sam3_inference.md",
+      "task_sha256": "1577e5984d086e59abac131524cc6d9e90bae4a2a48c277f40f009b4b0503702",
+      "timeout_seconds": 1200,
+      "label": "SAM3 推理"
+    },
+    {
+      "index": 15,
+      "task_id": "02_Code_Intelligence_task_2_sam3_debug",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_2_sam3_debug.md",
+      "task_sha256": "0bc808afbd687a42bb5cf14f4c08468de28207ac224fdfb5d3f25dc2bb465ff4",
+      "timeout_seconds": 1200,
+      "label": "SAM3 调试"
+    },
+    {
+      "index": 16,
+      "task_id": "02_Code_Intelligence_task_4_jigsaw_puzzle_medium_zh",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_4_jigsaw_puzzle_medium_zh.md",
+      "task_sha256": "b04673b13eed7a96e11f3083e4ee64b144c3fde56f5878f3dbf02812f1cecfbe",
+      "timeout_seconds": 1200,
+      "label": "中等拼图"
+    },
+    {
+      "index": 17,
+      "task_id": "02_Code_Intelligence_task_5_jigsaw_puzzle_hard_zh",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_5_jigsaw_puzzle_hard_zh.md",
+      "task_sha256": "84770415d8f4e7b161b432efc70430ddc3b491d6c4f5375e91f95a011256fa6f",
+      "timeout_seconds": 1200,
+      "label": "困难拼图"
+    },
+    {
+      "index": 18,
+      "task_id": "02_Code_Intelligence_task_6_benchmark_vlmeval_ocrbench_zh",
+      "task": "tasks/02_Code_Intelligence/02_Code_Intelligence_task_6_benchmark_vlmeval_ocrbench_zh.md",
+      "task_sha256": "a889909cab60acf5569e4315be068bd3cb015a6dede1ed17041c325ea00056f5",
+      "timeout_seconds": 1200,
+      "label": "OCRBench 评测"
+    },
+    {
+      "index": 19,
+      "task_id": "03_Social_Interaction_task_5_chat_escalation_routing",
+      "task": "tasks/03_Social_Interaction/03_Social_Interaction_task_5_chat_escalation_routing.md",
+      "task_sha256": "3fde766681175f506d2e405ef247458a2bdddda0ea5811c1ee0b615422d094cd",
+      "timeout_seconds": 600,
+      "label": "聊天升级分流"
+    },
+    {
+      "index": 20,
+      "task_id": "04_Search_Retrieval_task_11_fuzzy_repo_search",
+      "task": "tasks/04_Search_Retrieval/04_Search_Retrieval_task_11_fuzzy_repo_search.md",
+      "task_sha256": "d0eb0c81329e3290ff376212212d72dbeda08494f9bf68224c9017abf5005ef5",
+      "timeout_seconds": 900,
+      "label": "模糊仓库检索"
+    },
+    {
+      "index": 21,
+      "task_id": "04_Search_Retrieval_task_1_google_scholar_search",
+      "task": "tasks/04_Search_Retrieval/04_Search_Retrieval_task_1_google_scholar_search.md",
+      "task_sha256": "7b959fd64ebabf16e151629968649cba432db7748ea9eca84c731391a01d302a",
+      "timeout_seconds": 1200,
+      "label": "Google Scholar 检索"
+    },
+    {
+      "index": 22,
+      "task_id": "04_Search_Retrieval_task_3_constraint_search",
+      "task": "tasks/04_Search_Retrieval/04_Search_Retrieval_task_3_constraint_search.md",
+      "task_sha256": "122f3a9fe514513809fe82ee45cbafddc6994967d10e691559f611ba3300a17a",
+      "timeout_seconds": 900,
+      "label": "约束检索"
+    },
+    {
+      "index": 23,
+      "task_id": "04_Search_Retrieval_task_4_efficient_search",
+      "task": "tasks/04_Search_Retrieval/04_Search_Retrieval_task_4_efficient_search.md",
+      "task_sha256": "cdd9b2bcb271822a0a641128f2c7b58f5cbd22d1601fc534c8cb8fbdceeaea7a",
+      "timeout_seconds": 600,
+      "label": "高效检索"
+    },
+    {
+      "index": 24,
+      "task_id": "04_Search_Retrieval_task_8_paper_affiliation_search",
+      "task": "tasks/04_Search_Retrieval/04_Search_Retrieval_task_8_paper_affiliation_search.md",
+      "task_sha256": "51215b364dd285a4b4353001b54d71e835ed099d31b0a5a135946c89f460749e",
+      "timeout_seconds": 1200,
+      "label": "论文机构检索"
+    },
+    {
+      "index": 25,
+      "task_id": "05_Creative_Synthesis_task_1_match_report",
+      "task": "tasks/05_Creative_Synthesis/05_Creative_Synthesis_task_1_match_report.md",
+      "task_sha256": "61168700ea49773762d198c75296a5ef92062badfe8cc9461ccb92506c7835fa",
+      "timeout_seconds": 1200,
+      "label": "比赛报告"
+    },
+    {
+      "index": 26,
+      "task_id": "05_Creative_Synthesis_task_2_goal_highlights",
+      "task": "tasks/05_Creative_Synthesis/05_Creative_Synthesis_task_2_goal_highlights.md",
+      "task_sha256": "555561d733351b2826867d6cc683df0cc64a993578a1bc1fdd19de460c084220",
+      "timeout_seconds": 1200,
+      "label": "进球集锦"
+    },
+    {
+      "index": 27,
+      "task_id": "05_Creative_Synthesis_task_4_video_notes",
+      "task": "tasks/05_Creative_Synthesis/05_Creative_Synthesis_task_4_video_notes.md",
+      "task_sha256": "c90029c39a8e126a8672771d2f3e1105a11b5f614125e3dd2a8eb034ac7c56dc",
+      "timeout_seconds": 1200,
+      "label": "视频笔记"
+    },
+    {
+      "index": 28,
+      "task_id": "05_Creative_Synthesis_task_5_product_launch_video_to_json",
+      "task": "tasks/05_Creative_Synthesis/05_Creative_Synthesis_task_5_product_launch_video_to_json.md",
+      "task_sha256": "0bf6c5476febc077d8e4c6d3b5e51389201f539d3b776b056f276a552c082c25",
+      "timeout_seconds": 1200,
+      "label": "发布会视频转 JSON"
+    },
+    {
+      "index": 29,
+      "task_id": "05_Creative_Synthesis_task_7_paper_to_poster",
+      "task": "tasks/05_Creative_Synthesis/05_Creative_Synthesis_task_7_paper_to_poster.md",
+      "task_sha256": "2f9ec949321a4751444c5c7cb52a8d35ca9880644bf21af4641ace6c8e6dcd8d",
+      "timeout_seconds": 600,
+      "label": "论文转海报"
+    },
+    {
+      "index": 30,
+      "task_id": "05_Creative_Synthesis_task_9_repo_to_slides",
+      "task": "tasks/05_Creative_Synthesis/05_Creative_Synthesis_task_9_repo_to_slides.md",
+      "task_sha256": "dc4101254a9b7ebcad795a06659c83cb31f0ffb2b249ad48631b4440e13f8353",
+      "timeout_seconds": 600,
+      "label": "仓库转幻灯片"
+    },
+    {
+      "index": 31,
+      "task_id": "06_Safety_Alignment_task_10_malicious_skill",
+      "task": "tasks/06_Safety_Alignment/06_Safety_Alignment_task_10_malicious_skill.md",
+      "task_sha256": "863f2cb25ba3652e66ce2c8fc57ba0d23205564d23f0076c43badf66c9b39f61",
+      "timeout_seconds": 600,
+      "label": "恶意 Skill 防御"
+    }
+  ]
+}

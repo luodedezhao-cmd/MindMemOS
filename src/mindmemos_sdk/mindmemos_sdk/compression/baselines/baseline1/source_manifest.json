@@ -1,0 +1,45 @@
+{
+  "source_files": [
+    {
+      "path": "observer/install.py",
+      "source": "WildClawBench host_observation/install.py",
+      "source_sha256": "fe820a856dae093e4bfb6b7038acb397f17fd9959314e022145766984707132a",
+      "packaged_sha256": "fe820a856dae093e4bfb6b7038acb397f17fd9959314e022145766984707132a",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "observer/meter.mjs",
+      "source": "WildClawBench host_observation/meter.mjs",
+      "source_sha256": "0f354d3bb8fc9baedafa813ed282a73548fb3d1f0a6492ef7e093df96b235ba7",
+      "packaged_sha256": "0f354d3bb8fc9baedafa813ed282a73548fb3d1f0a6492ef7e093df96b235ba7",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "observer/metrics.py",
+      "source": "WildClawBench host_observation/metrics.py",
+      "source_sha256": "7d25b62c0fdfeb7f38305f8b213031c68e0dc91771ee332b1bd45d787a72070f",
+      "packaged_sha256": "7d25b62c0fdfeb7f38305f8b213031c68e0dc91771ee332b1bd45d787a72070f",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "observer/model_registration.py",
+      "source": "WildClawBench observer/model_registration.py",
+      "source_sha256": "dca46af5cdc4296c9188622ec25e48f9ea657d3c896b6a16e04a9ea44fb4d28b",
+      "packaged_sha256": "dca46af5cdc4296c9188622ec25e48f9ea657d3c896b6a16e04a9ea44fb4d28b",
+      "change": "byte-identical copy"
+    },
+    {
+      "path": "vision_registration.json",
+      "source": "WildClawBench vision_registration.json",
+      "source_sha256": "7e783d0a63791234a515fa8f63d14ba19eeb191f24ca0d1d020ac29f96b1741f",
+      "packaged_sha256": "7e783d0a63791234a515fa8f63d14ba19eeb191f24ca0d1d020ac29f96b1741f",
+      "change": "byte-identical copy"
+    }
+  ],
+  "packaging_files": [
+    "run.py",
+    "agent.py",
+    "README.md"
+  ],
+  "note": "Packaging adapters are new; native compression and observation sources are copied as listed."
+}
