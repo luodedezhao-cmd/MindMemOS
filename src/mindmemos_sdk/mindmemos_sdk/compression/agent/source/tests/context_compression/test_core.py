@@ -253,11 +253,6 @@ class CoreTests(unittest.TestCase):
             for invalid in ({}, [], "", False, 0):
                 self.assertEqual(eligible_end([dict(msg("plain"), **{key: invalid}), msg("keep")], 0, 1), 0)
 
-    @unittest.skip('Historical v1 research-plan archive is outside this ADyn package')
-    def test_plan_preserves_prompt(self):
-        root = Path(__file__).resolve().parents[2]
-        original = (root / "research/stage_boundary_probe/prompt_v1.txt").read_text()
-        self.assertIn("```text\n" + original + "```", (root / "plan.md").read_text())
 
 
 if __name__ == "__main__":

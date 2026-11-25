@@ -180,18 +180,13 @@ class FinalizationTests(unittest.TestCase):
         self.assertFalse(result['unused_policy_allows_queue'])
         self.assertFalse(accounting_allows_queue(result))
 
-    def test_two_stage_transport_keeps_execution_after_phase_switch(self):
+    def test_adyn_transport_keeps_execution_after_phase_switch(self):
         first, release = threading.Event(), threading.Event()
         def responder(handler, request):
-            if 'response_format' in request['payload']:
-                first.set()
-                release.wait(3)
-                value = envelope(dict(stage_end=True, confidence=.9, reason='closed', C=None))
-            else:
-                value = {'choices': [{'message': {'content': 'FULL'}, 'finish_reason': 'stop'}],
-                         'usage': {'prompt_tokens': 4, 'completion_tokens': 2, 'total_tokens': 6}}
-            respond_json(handler, value)
-        config = CompressionConfig(method='v4', execution_mode='async', trigger_tokens=80, full_trigger_tokens=500)
+            first.set()
+            release.wait(3)
+            respond_json(handler, envelope())
+        config = CompressionConfig(method='dual_a', execution_mode='async', trigger_tokens=80, full_trigger_tokens=500)
         try:
             with mock_upstream(responder) as upstream:
                 compressor = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}/v1', '', 'model', config,
@@ -208,7 +203,7 @@ class FinalizationTests(unittest.TestCase):
                 self.assertTrue(manager.wait_closed())
                 self.log.finalize(True)
                 calls = [r for r in self.read() if r['event'] in ('compressor_started', 'compressor_usage')]
-                self.assertEqual(len(calls), 4)
+                self.assertEqual(len(calls), 2)
                 self.assertTrue(all(r['phase'] == 'execution' for r in calls))
         finally:
             release.set()

@@ -1,6 +1,8 @@
 """Offline only: real localhost sockets and deterministic mock upstreams."""
 
 from contextlib import contextmanager
+from dataclasses import replace
+import hashlib
 import http.client
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
@@ -14,7 +16,7 @@ from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
 from src.context_compression.compressor import CompressionError, OpenAICompressor, parse_result
-from src.context_compression.prompts import JOINT_SYSTEM_PROMPT, build_messages
+from src.context_compression.prompts import build_messages
 from src.context_compression.proxy import EventLog, ProxyHandler, create_server, shutdown_server
 from src.context_compression.types import CompressionConfig, CompressionSnapshot
 
@@ -24,14 +26,19 @@ VALID = {"stage_end": False, "confidence": 0.85, "reason": "The current investig
 
 
 def envelope(result=None, finish_reason="stop", usage=None):
-    return {"choices": [{"message": {"role": "assistant", "content": json.dumps(VALID if result is None else result)},
+    return {"choices": [{"message": {"role": "assistant", "content": VALID['C'] if result is None else result},
                          "finish_reason": finish_reason}],
             "usage": {"prompt_tokens": 51, "completion_tokens": 12, "total_tokens": 63} if usage is None else usage}
 
 
 def snapshot():
     return CompressionSnapshot(1, 2, 3, 4, 5, "Make report", ("Earlier exact identifier: item-17",),
-                               ({"role": "assistant", "content": "Recent evidence only."},))
+                               ({"role": "assistant", "content": "Recent evidence only."},),
+                               compression_mode='incremental')
+
+
+def adyn_config(**overrides):
+    return CompressionConfig(**{'method': 'dual_a', 'full_trigger_tokens': 10000000, **overrides})
 
 
 class MockServer(ThreadingHTTPServer):
@@ -85,38 +92,42 @@ def mock_upstream(responder=None):
 
 
 class PromptTests(unittest.TestCase):
-    @unittest.skip('Historical v1 research-plan archive is outside this ADyn package')
-    def test_historical_detector_archive_is_preserved(self):
-        original = (ROOT / "research/stage_boundary_probe/prompt_v1.txt").read_text(encoding="utf-8")
-        self.assertEqual((ROOT / "src/context_compression/boundary_prompt_v1.txt").read_text(), original)
-        self.assertIn("```text\n" + original + "```", (ROOT / "plan.md").read_text(encoding="utf-8"))
-
-    def test_original_v1_prompt_is_the_entire_system_message(self):
-        import hashlib
-        expected = (ROOT / "src/context_compression/joint_prompt_v1.txt").read_text(encoding="utf-8")
-        self.assertEqual(hashlib.sha256(expected.encode()).hexdigest(),
-                         "4e78abbf4017876c63d042851b788a836a27cebf6390d9ec8120e2dec9f0fdb0")
-        self.assertEqual(JOINT_SYSTEM_PROMPT, expected)
-        self.assertEqual(build_messages(snapshot())[0], {"role": "system", "content": expected})
-        self.assertNotIn("Do not summarize or rewrite", expected)
-        self.assertIn("DEFINITION\n", expected)
-        self.assertIn("C must summarize ONLY NEW_RAW_TRAJECTORY (R)", expected)
-        self.assertIn("C must consolidate BOTH", expected)
-
-    def test_user_v2_prompt_archive_is_preserved(self):
-        import hashlib
-        expected = (ROOT / "src/context_compression/joint_prompt_v2.txt").read_text(encoding="utf-8")
-        self.assertEqual(hashlib.sha256(expected.encode()).hexdigest(),
-                         "8ec7ab2468618d3fe6cfd33e4fe931f00095e27c7b3043bb8389d7faaea4946a")
+    def test_only_original_adyn_templates_are_shipped(self):
+        package = ROOT / 'src/context_compression'
+        expected = {
+            'a_incremental_prompt.txt': '08a1428b693faf2c1730153117b4000e4d4397ec526a24c920d0f0ad34fe6346',
+            'a_full_prompt.txt': '5952549419973645b39acf7691d5c391562996fb2bbd73a40fad88a312cb2075',
+        }
+        self.assertEqual({p.name for p in package.glob('*.txt')}, set(expected))
+        for name, digest in expected.items():
+            self.assertEqual(hashlib.sha256((package / name).read_bytes()).hexdigest(), digest)
 
     def test_only_frozen_task_memory_raw_are_inputs(self):
         frozen = snapshot()
-        messages = build_messages(frozen)
-        self.assertEqual(messages[0]["role"], "system")
-        self.assertEqual(json.loads(messages[1]["content"]), {
-            "TASK": frozen.task, "EXISTING_COMPRESSED_MEMORY": list(frozen.memory),
-            "NEW_RAW_TRAJECTORY": list(frozen.raw),
-        })
+        for mode, title in [('incremental', 'WILDCLAWBENCH INCREMENTAL MEMORY DELTA'),
+                            ('full', 'WILDCLAWBENCH FULL MEMORY CONSOLIDATION')]:
+            messages = build_messages(replace(frozen, compression_mode=mode))
+            self.assertEqual(len(messages), 1)
+            self.assertEqual(messages[0]['role'], 'user')
+            self.assertTrue(messages[0]['content'].startswith(title))
+            for text in (frozen.task, *frozen.memory, json.dumps(list(frozen.raw), ensure_ascii=False, indent=2)):
+                self.assertIn(text, messages[0]['content'])
+
+    def test_template_markers_in_snapshot_remain_literal(self):
+        frozen = replace(snapshot(), task='中文 {{ history }}', memory=('{{ task }}',),
+                         raw=({'role': 'assistant', 'content': '{{ prev_summary }}'},))
+        for mode in ('incremental', 'full'):
+            text = build_messages(replace(frozen, compression_mode=mode))[0]['content']
+            for literal in (frozen.task, frozen.memory[0], frozen.raw[0]['content']):
+                self.assertIn(literal, text)
+
+    def test_unsupported_method_and_mode_are_rejected(self):
+        for method in ('ours', 'p0', 'p1', 'dual_neutral', 'v3', 'v4'):
+            with self.subTest(method=method), self.assertRaisesRegex(ValueError, 'only includes dual_a'):
+                build_messages(snapshot(), method)
+        for mode in (None, 'boundary', 'unknown'):
+            with self.subTest(mode=mode), self.assertRaisesRegex(ValueError, 'incremental or full'):
+                build_messages(replace(snapshot(), compression_mode=mode))
 
 
 class ParserTests(unittest.TestCase):
@@ -156,28 +167,29 @@ class ParserTests(unittest.TestCase):
 
 
 class CompressorHTTPTests(unittest.TestCase):
-    def test_p0_plain_summary_and_original_prompt_without_output_cap(self):
+    def test_adyn_full_plain_summary_and_original_prompt_without_output_cap(self):
         result = {"choices": [{"message": {"content": "### REASONING\nfacts\n### COMPLETED\ninspection"},
                                "finish_reason": "stop"}], "usage": {"prompt_tokens": 50, "completion_tokens": 10}}
         with mock_upstream(lambda h, req: respond_json(h, result)) as upstream:
             compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}/v1", "", "model",
-                                          CompressionConfig(method="p0"))
-            actual = compressor(snapshot())
+                                          adyn_config())
+            actual = compressor(replace(snapshot(), compression_mode='full'))
             self.assertTrue(actual.stage_end)
             body = upstream.captured[0]["payload"]
             self.assertNotIn("temperature", body)
             for key in ("max_tokens", "max_output_tokens", "max_completion_tokens", "response_format"):
                 self.assertNotIn(key, body)
-            self.assertIn("INITIAL GUIDELINE P0", body["messages"][0]["content"])
+            self.assertIn("WILDCLAWBENCH FULL MEMORY CONSOLIDATION", body["messages"][0]["content"])
             self.assertIn("item-17", body["messages"][0]["content"])
 
-    def test_joint_call_goes_directly_to_upstream_once_and_keeps_usage(self):
+    def test_incremental_call_goes_directly_to_upstream_once_and_keeps_usage(self):
         events = []
-        with mock_upstream(lambda h, req: respond_json(h, envelope(dict(VALID, stage_end=True)))) as upstream:
+        with mock_upstream(lambda h, req: respond_json(h, envelope())) as upstream:
             compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}/v1", "mock-key", "upstream-model",
-                                          CompressionConfig(), {"X-App": "test"}, events.append)
+                                          adyn_config(), {"X-App": "test"}, events.append)
             result = compressor(snapshot())
-            self.assertIs(result.stage_end, True)
+            self.assertIs(result.stage_end, False)
+            self.assertEqual(result.C, VALID['C'])
             self.assertEqual(len(upstream.captured), 1)
             request = upstream.captured[0]
             self.assertEqual(request["path"], "/v1/chat/completions")
@@ -188,7 +200,7 @@ class CompressorHTTPTests(unittest.TestCase):
                 self.assertNotIn(key, request["payload"])
             self.assertNotIn("temperature", request["payload"])
             self.assertEqual(request["payload"]["model"], "upstream-model")
-            self.assertEqual(request["payload"]["response_format"], {"type": "json_object"})
+            self.assertNotIn('response_format', request['payload'])
             self.assertFalse(request["payload"]["stream"])
             self.assertEqual(events[0]["event"], "compressor_started")
             self.assertEqual(events[-1]["event"], "compressor_usage")
@@ -203,7 +215,7 @@ class CompressorHTTPTests(unittest.TestCase):
                   {"choices": [{"finish_reason": "stop", "message": {"tool_calls": [{}], "content": json.dumps(VALID)}}]}]
         for value in values:
             with self.subTest(value=value), mock_upstream(lambda h, req: respond_json(h, value)) as upstream:
-                compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}/v1", "mock-key", "model", CompressionConfig())
+                compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}/v1", "mock-key", "model", adyn_config())
                 with self.assertRaises(CompressionError) as caught:
                     compressor(snapshot())
                 self.assertNotIn("private", str(caught.exception))
@@ -211,7 +223,7 @@ class CompressorHTTPTests(unittest.TestCase):
     def test_http_failure_is_safe_and_has_separate_usage_event(self):
         events = []
         with mock_upstream(lambda h, req: respond_json(h, {"secret": "mock-key private-body"}, 429)) as upstream:
-            compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}/v1", "mock-key", "model", CompressionConfig(), event_sink=events.append)
+            compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}/v1", "mock-key", "model", adyn_config(), event_sink=events.append)
             with self.assertRaises(CompressionError) as caught:
                 compressor(snapshot())
             self.assertNotIn("mock-key", str(caught.exception))
@@ -226,7 +238,7 @@ class CompressorHTTPTests(unittest.TestCase):
             respond_json(handler, envelope())
         try:
             with mock_upstream(delayed) as upstream:
-                compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}", "", "model", CompressionConfig(timeout_seconds=0.08))
+                compressor = OpenAICompressor(f"http://127.0.0.1:{upstream.server_port}", "", "model", adyn_config(timeout_seconds=0.08))
                 started = time.monotonic()
                 with self.assertRaises(CompressionError):
                     compressor(snapshot())
@@ -252,7 +264,8 @@ class ProxyHTTPTests(unittest.TestCase):
                                 "instance_id": "1234567890abcdef1234567890abcdef",
                                 "upstream_api_key": "upstream-test-key", "upstream_model": "real-model",
                                 "upstream_headers": {"X-App": "proxy-test"}, "task": "Make report", "port": 0,
-                                "compression": compression or {"trigger_tokens": 1000000}, "log_dir": self.temp.name})
+                                "compression": adyn_config(**(compression or {"trigger_tokens": 1000000})).to_dict(),
+                                "log_dir": self.temp.name})
         thread = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.02}, daemon=True)
         thread.start()
         self.proxies.append((server, thread))
@@ -360,7 +373,7 @@ class ProxyHTTPTests(unittest.TestCase):
 
     def test_sync_compression_precedes_main_and_private_delta_is_stripped(self):
         def respond(handler, captured):
-            if captured["payload"].get("response_format") == {"type": "json_object"}:
+            if captured['payload'].get('stream') is False:
                 respond_json(handler, envelope())
             else:
                 respond_json(handler, {"choices": [], "usage": {"prompt_tokens": 100, "completion_tokens": 1}})
@@ -373,7 +386,9 @@ class ProxyHTTPTests(unittest.TestCase):
                 "start": 0, "end": 3, "messages": messages[1:], "prefix": messages[:1]}}
             self.assertEqual(self.request(proxy, payload)[0], 200)
             self.assertEqual(len(upstream.captured), 2)
-            self.assertIn("response_format", upstream.captured[0]["payload"])
+            self.assertNotIn("response_format", upstream.captured[0]["payload"])
+            self.assertIn('WILDCLAWBENCH INCREMENTAL MEMORY DELTA',
+                          upstream.captured[0]['payload']['messages'][0]['content'])
             self.assertIn(VALID["C"], upstream.captured[1]["payload"]["messages"][2]["content"])
             self.assertTrue(all("_wildclaw_context" not in c["payload"] for c in upstream.captured))
             self.assertEqual(self.request(proxy, payload)[0], 200)

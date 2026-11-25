@@ -13,12 +13,12 @@ from tests.ours_observation.test_metrics import sample
 
 
 class AsyncTransportTests(unittest.TestCase):
-    def manager(self, upstream):
+    def manager(self, upstream, **overrides):
         events = []
         def sink(event):
             events.append({'schema_version': 3, 'instance_id': IDENTITY, 'phase': 'execution', **event})
-        config = CompressionConfig(method='v4', execution_mode='async', trigger_tokens=80,
-                                   full_trigger_tokens=500, timeout_seconds=3)
+        config = CompressionConfig(**{'method': 'dual_a', 'execution_mode': 'async', 'trigger_tokens': 80,
+                                      'full_trigger_tokens': 500, 'timeout_seconds': 3, **overrides})
         compressor = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}/v1', '', 'model',
                                       config, event_sink=sink)
         manager = AsyncContextManager(compressor, config, task='the task', instance_id=IDENTITY, event_sink=sink)
@@ -66,28 +66,24 @@ class AsyncTransportTests(unittest.TestCase):
         finally:
             release.set()
 
-    def test_second_stage_uses_frozen_original_raw_and_memory(self):
+    def test_full_uses_frozen_original_raw_and_memory(self):
         first, release = threading.Event(), threading.Event()
         def respond(handler, request):
-            p = request['payload']
-            if 'response_format' in p:
-                first.set()
-                release.wait(5)
-                respond_json(handler, envelope(dict(stage_end=True, confidence=.9, reason='closed', C=None)))
-            else:
-                respond_json(handler, {'choices': [{'message': {'content': 'FULL'}, 'finish_reason': 'stop'}]})
+            first.set()
+            release.wait(5)
+            respond_json(handler, envelope('FULL'))
         try:
             with mock_upstream(respond) as upstream:
-                manager, _ = self.manager(upstream)
+                manager, _ = self.manager(upstream, full_trigger_tokens=160)
                 manager._memory = ('OLD_ID_17',)
                 manager.transform(payload([msg('original-'+'x'*800), msg('keep')]))
                 self.assertTrue(first.wait(2))
                 manager.transform(payload([msg('unseen_future')], start=3))
                 release.set()
                 self.assertTrue(manager._pending.done.wait(2))
-                self.assertEqual(len(upstream.captured), 2)
-                boundary, full = [r['payload'] for r in upstream.captured]
-                self.assertNotIn('OLD_ID_17', json.dumps(boundary))
+                self.assertEqual(len(upstream.captured), 1)
+                full = upstream.captured[0]['payload']
+                self.assertIn('WILDCLAWBENCH FULL MEMORY CONSOLIDATION', full['messages'][0]['content'])
                 self.assertIn('OLD_ID_17', json.dumps(full))
                 self.assertIn('original-', json.dumps(full))
                 self.assertNotIn('unseen_future', json.dumps(full))

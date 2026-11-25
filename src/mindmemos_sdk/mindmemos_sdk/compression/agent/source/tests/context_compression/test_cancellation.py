@@ -6,7 +6,7 @@ import unittest
 from src.context_compression.cancellation import CompressionCancelled
 from src.context_compression.compressor import OpenAICompressor
 from src.context_compression.types import CompressionConfig
-from tests.context_compression.test_transport import mock_upstream, snapshot, envelope, respond_json
+from tests.context_compression.test_transport import mock_upstream, snapshot, envelope, respond_json, adyn_config
 from tests.context_compression import test_transport as transport_tests
 from tests.context_compression.test_core import payload, msg
 
@@ -14,7 +14,7 @@ from tests.context_compression.test_core import payload, msg
 class CancellationTests(unittest.TestCase):
     def compressor(self, upstream, events, audit=None):
         return OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}/v1', '', 'model',
-                               CompressionConfig(timeout_seconds=10), event_sink=events.append, audit_sink=audit)
+                               adyn_config(timeout_seconds=10), event_sink=events.append, audit_sink=audit)
 
     def test_cancel_before_dispatch_does_not_call_upstream(self):
         events=[]

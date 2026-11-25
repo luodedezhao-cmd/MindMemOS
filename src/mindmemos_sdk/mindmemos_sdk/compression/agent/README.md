@@ -4,7 +4,7 @@
 
 主 Agent 使用上游 [OpenClaw](https://github.com/openclaw/openclaw) `2026.3.11`，任务运行与评分采用固定版本 [WildClawBench](https://github.com/InternLM/WildClawBench/tree/56bc20d31ebf5fdee627c781b55a1e4959893bb0)。与 [Baseline 1](../baselines/baseline1/README.md)、[Baseline 2](../baselines/baseline2/README.md) 使用同一镜像、主模型和[31 项任务列表](../task_list_31.md)。
 
-本目录上传的是我们实际实验中的 **`dual_a` + dynamic + async** 接入实现。`source/src/` 从对应实验的冻结源码复制；核心运行文件已核对与相关三个冻结副本一致。逐文件来源、原始与发布 SHA-256、封装改动见 [source_manifest.json](source_manifest.json)。
+本目录上传的是我们实际实验中的 **`dual_a` + dynamic + async** 接入实现，来源为对应实验的冻结源码。发布版已删除 ADyn 不使用的历史 prompt，并将 `prompts.py` 精简为仅构造 ADyn 的增量／全量请求；两份实际 prompt、动态阈值、异步调度和提交逻辑保持原样。逐文件来源、原始与发布 SHA-256、删减记录见 [source_manifest.json](source_manifest.json)。
 
 | 代码 | 用途与来源 |
 |---|---|
@@ -16,6 +16,16 @@
 | [compressor.py](source/src/context_compression/compressor.py)、[cancellation.py](source/src/context_compression/cancellation.py) | 原实验的压缩调用、响应校验、超时和连接取消 |
 | [增量 prompt](source/src/context_compression/a_incremental_prompt.txt)、[全量 prompt](source/src/context_compression/a_full_prompt.txt) | 我们的方法使用的两份 prompt；不是 Baseline 2 的原生摘要 prompt |
 | [ours_observation](source/src/ours_observation/)、[host_observation](source/src/host_observation/) | 原实验的计量钩子与统计模块 |
+
+实际使用的 prompt 只有两份：
+
+```text
+source/src/context_compression/
+├── a_incremental_prompt.txt   # 增量：输出新增历史需要追加的记忆
+└── a_full_prompt.txt          # 全量：整合旧记忆与可压缩历史
+```
+
+`prompts.py` 按程序选定的 `incremental`／`full` 模式读取对应文件，不再加载其他历史模板；不支持的 prompt 方法会明确报错。
 
 ## 与已上传压缩 SDK 的关系
 
@@ -91,7 +101,7 @@ python src/mindmemos_sdk/mindmemos_sdk/compression/agent/run.py \
 
 [run.py](run.py) 和 [bootstrap.py](bootstrap.py) 是新增可移植入口：用参数替代固定本机目录，加载本目录的冻结 runner 和压缩模块，复用外部固定 benchmark 的任务执行与评分，不改写 benchmark 工作区源码。[agent.py](agent.py) 提取原 `ObservedOurs` worker 的观测接入。配置来自原运行设置，仅提取无凭据的压缩参数和原生模型描述。
 
-本入口不带历史批次选择、人工放行或按计量状态暂停后续队列的控制逻辑。原始压缩、快照提交、模型注册和计量算法保持原样。源码中的其他历史方法与 prompt 为保持模块完整而保留；本入口默认只运行上述 ADyn 配置。
+本入口不带历史批次选择、人工放行或按计量状态暂停后续队列的控制逻辑。原始压缩调用、快照提交、模型注册和计量算法保持原样；prompt 加载入口已限定为 ADyn。两种模式构造的请求正文与原实验实现一致。本入口运行上述 ADyn 配置。
 
 每项任务保存 `result.json`、评分、`chat.jsonl`、`measurement.json`、`meter/` 和 `compression/`，后者含事件、主模型／压缩用量和快照正文审计。`compression_applied` 才表示摘要实际应用。原统计器对未应用调用保留 unknown 视图及可得的 `actual_usage`；比较“已使用”用量时仍须按轨迹和应用事件筛选，不能把它当作完整账户账单。异步压缩累计时长可能与 Agent 重叠，不直接相加。
 
@@ -102,7 +112,7 @@ cd src/mindmemos_sdk/mindmemos_sdk/compression/agent/source
 python -m unittest discover -s tests/context_compression -t .
 ```
 
-测试覆盖动态门槛、增量升级全量、异步提交、保留新历史、工具组、取消、失败和日志。两个依赖旧 v1 研究计划归档的文档测试明确跳过；没有跳过 ADyn 行为检查。
+测试覆盖实际两份 prompt、动态门槛、增量升级全量、异步提交、保留新历史、工具组、取消、失败和日志。旧 prompt 的归档测试已移除，相关 HTTP／审计测试已改为 ADyn 场景。
 
 该测试集使用原 benchmark 的 `src`／`tests` 命名空间，按上述方式独立运行，已排除 MindMemOS 仓库根 pytest 的自动收集。
 

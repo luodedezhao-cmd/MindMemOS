@@ -1,11 +1,11 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-11-25T23:19:04.103537+00:00",
+  "checked_at_utc": "2026-11-25T23:36:05.531980+00:00",
   "unit_tests": {
-    "run": 109,
-    "passed": 107,
-    "skipped": 2,
-    "skip_reason": "Two historical v1 research-plan archive assertions are outside the ADyn runtime package."
+    "run": 108,
+    "passed": 108,
+    "skipped": 0,
+    "scope": "ADyn prompt loading plus controller, HTTP transport, cancellation, audit and usage regressions."
   },
   "cli_preflight": {
     "tasks": 31,
@@ -14,8 +14,12 @@
     "model_calls": 0
   },
   "source_identity": {
-    "byte_identical_runtime_files": 38,
-    "three_original_frozen_sources_agree": true,
+    "retained_runtime_files": 28,
+    "byte_identical_runtime_files": 27,
+    "modified_runtime_files": [
+      "source/src/context_compression/prompts.py"
+    ],
+    "removed_unused_prompt_files": 10,
     "benchmark_execution_function_ast_unchanged": true
   },
   "offline_containers": {
@@ -35,7 +39,8 @@
   "fixture_adjustments": [
     "Use portable source paths and extracted original audit helpers.",
     "Assert Qwen122B/high in the mock compressor.",
-    "Set NO_PROXY for both Python and native CLI loopback mocks; original runtime unchanged."
+    "Set NO_PROXY for both Python and native CLI loopback mocks; original runtime unchanged.",
+    "Prompt-dependent HTTP and audit fixtures now exercise ADyn rather than removed historical prompt modes. Obsolete archive tests removed."
   ],
   "paid_model_calls": 0,
   "benchmark_task_runs": 0,
@@ -47,11 +52,18 @@
     "native_model.json": "e2dfbd5aad8cbf96074708bc14830160b686cc29e9914e2fccc6600ba072d322",
     "tests/container_smoke.py": "f013f4ddb94433b1b2e98986eb5d2c30a133e9c8f93f36a13212666dab60a1ef",
     "source/tests/ours_observation/audit_helpers.py": "a6e7f5770f0631b0a7841e9e79de55f6dc0dacf1a83d5a1e1591c14b44369a88",
-    "source_manifest.json": "08d1df2c91891dc3ed0a65b3884452b030f907e221a297ccffcf7b7794e43763",
+    "source_manifest.json": "26d197e63a80a5785a6f08ebff0f730c5de3db2e726b647703031c6e5a1dcdee",
     "source/conftest.py": "0c8cc9e62137eb8c958b04e51fe1beebd9291995a98c3e4511b67fcd18a08d7f"
   },
   "optional_pytest_collection_check": {
     "status": "not_run",
     "reason": "pytest is unavailable in the local verification environment. Standalone unittest suite and Docker runtime checks passed."
+  },
+  "prompt_equivalence": {
+    "original_adyn_payloads_compared": 16,
+    "identical": true,
+    "both_modes": true,
+    "unicode_and_literal_template_markers": true,
+    "both_active_prompt_files_byte_identical": true
   }
 }

@@ -16,7 +16,7 @@ from src.context_compression.core import ContextManager, memory_messages
 from src.context_compression.proxy import create_server, shutdown_server
 from src.context_compression.types import CompressionConfig, CompressionResult
 from tests.context_compression.test_core import IDENTITY, msg, payload
-from tests.context_compression.test_transport import envelope, mock_upstream, respond_json
+from tests.context_compression.test_transport import envelope, mock_upstream, respond_json, adyn_config
 
 
 class AuditTests(unittest.TestCase):
@@ -27,12 +27,13 @@ class AuditTests(unittest.TestCase):
         self.audit = CompressionAudit(self.root, IDENTITY)
         self.events = []
         self.config = CompressionConfig(trigger_tokens=80)
+        self.transport_config = adyn_config(trigger_tokens=80)
 
     def records(self):
         return [json.loads(s) for s in self.audit.path.read_text().splitlines()]
 
     def manager(self, compressor, **options):
-        return ContextManager(compressor, options.get('config', self.config), task='the task',
+        return ContextManager(compressor, options.get('config', compressor.config if isinstance(compressor, OpenAICompressor) else self.config), task='the task',
                               instance_id=IDENTITY, event_sink=self.events.append,
                               audit_sink=options.get('audit_sink', self.audit))
 
@@ -149,7 +150,7 @@ class AuditTests(unittest.TestCase):
         for response in (envelope(finish_reason='length'), {'not':'a valid envelope'}):
             with self.subTest(response=response), mock_upstream(lambda h,r: respond_json(h,response)) as upstream:
                 comp = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}', 'SECRET-KEY',
-                                        'model', self.config, event_sink=self.events.append, audit_sink=self.audit)
+                                        'model', self.transport_config, event_sink=self.events.append, audit_sink=self.audit)
                 manager = self.manager(comp)
                 manager.transform(payload([msg('a'*800), msg('keep')]))
                 saved = [r for r in self.records() if r['event']=='compressor_response'][-1]
@@ -163,7 +164,7 @@ class AuditTests(unittest.TestCase):
                 raise OSError('disk full')
             self.audit(event)
         with mock_upstream() as upstream:
-            comp = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}', '', 'model', self.config,
+            comp = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}', '', 'model', self.transport_config,
                                     event_sink=self.events.append, audit_sink=sink)
             manager = self.manager(comp, audit_sink=sink)
             manager.transform(payload([msg('a'*800), msg('keep')]))
@@ -179,7 +180,7 @@ class AuditTests(unittest.TestCase):
                 h.end_headers()
                 h.wfile.write(body)
             with self.subTest(status=status), mock_upstream(respond) as upstream:
-                comp = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}', '', 'model', self.config,
+                comp = OpenAICompressor(f'http://127.0.0.1:{upstream.server_port}', '', 'model', self.transport_config,
                                         event_sink=self.events.append, audit_sink=self.audit)
                 manager = self.manager(comp)
                 manager.transform(payload([msg('a'*800),msg('keep')]))
@@ -196,11 +197,11 @@ class AuditTests(unittest.TestCase):
 
     def test_production_proxy_wires_private_audit_without_metadata_body(self):
         def respond(h, req):
-            respond_json(h, envelope() if 'response_format' in req['payload'] else {'choices': [], 'usage': {}})
+            respond_json(h, envelope() if req['payload'].get('stream') is False else {'choices': [], 'usage': {}})
         with mock_upstream(respond) as upstream:
             server = create_server({'instance_id':IDENTITY, 'task':'the task', 'upstream_model':'model',
                 'upstream_base_url':f'http://127.0.0.1:{upstream.server_port}', 'upstream_api_key':'SECRET-KEY',
-                'port':0, 'compression':{'trigger_tokens':80}, 'log_dir':str(self.root)})
+                'port':0, 'compression':adyn_config(trigger_tokens=80).to_dict(), 'log_dir':str(self.root)})
             thread = threading.Thread(target=server.serve_forever, kwargs={'poll_interval':.02}, daemon=True)
             thread.start()
             try:

@@ -57,13 +57,6 @@
       "change": "byte-identical copy"
     },
     {
-      "path": "source/src/context_compression/boundary_prompt_v1.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/boundary_prompt_v1.txt",
-      "source_sha256": "c7cc506724a50f5e2fe3108577552b4a074f78b440213774ec72ab588774e600",
-      "packaged_sha256": "c7cc506724a50f5e2fe3108577552b4a074f78b440213774ec72ab588774e600",
-      "change": "byte-identical copy"
-    },
-    {
       "path": "source/src/context_compression/cancellation.py",
       "source": "WildClawBench ADyn frozen runtime/src/context_compression/cancellation.py",
       "source_sha256": "2a49146153ab183fd415a631f669192757cbd1e98cd3027f41410dbc2ce618d2",
@@ -85,27 +78,6 @@
       "change": "byte-identical copy"
     },
     {
-      "path": "source/src/context_compression/full_consolidation_prompt_v3.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/full_consolidation_prompt_v3.txt",
-      "source_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
-      "packaged_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/incremental_boundary_prompt_v3.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/incremental_boundary_prompt_v3.txt",
-      "source_sha256": "5bc95930fa1ce19c438f01ac10575c03b600bb6f9cd3433833bdb7fddf8e4c8a",
-      "packaged_sha256": "5bc95930fa1ce19c438f01ac10575c03b600bb6f9cd3433833bdb7fddf8e4c8a",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/incremental_boundary_prompt_v4.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/incremental_boundary_prompt_v4.txt",
-      "source_sha256": "d1cfd1996196de7717667a78c702a5df0330836b0b4fafa36599d88bedb94bfd",
-      "packaged_sha256": "d1cfd1996196de7717667a78c702a5df0330836b0b4fafa36599d88bedb94bfd",
-      "change": "byte-identical copy"
-    },
-    {
       "path": "source/src/context_compression/install_bridge.py",
       "source": "WildClawBench ADyn frozen runtime/src/context_compression/install_bridge.py",
       "source_sha256": "a84c368ce7898952c07ca64f97a67010ec0d7ab7402cbaf8e9bc920f8e3a9345",
@@ -117,20 +89,6 @@
       "source": "WildClawBench ADyn frozen runtime/src/context_compression/integration.py",
       "source_sha256": "14f205ae31223629ee0e63e08c32b77460c304d1032c460a838cc7e98b1fc2e6",
       "packaged_sha256": "14f205ae31223629ee0e63e08c32b77460c304d1032c460a838cc7e98b1fc2e6",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/joint_prompt_v1.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/joint_prompt_v1.txt",
-      "source_sha256": "4e78abbf4017876c63d042851b788a836a27cebf6390d9ec8120e2dec9f0fdb0",
-      "packaged_sha256": "4e78abbf4017876c63d042851b788a836a27cebf6390d9ec8120e2dec9f0fdb0",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/joint_prompt_v2.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/joint_prompt_v2.txt",
-      "source_sha256": "8ec7ab2468618d3fe6cfd33e4fe931f00095e27c7b3043bb8389d7faaea4946a",
-      "packaged_sha256": "8ec7ab2468618d3fe6cfd33e4fe931f00095e27c7b3043bb8389d7faaea4946a",
       "change": "byte-identical copy"
     },
     {
@@ -148,39 +106,11 @@
       "change": "byte-identical copy"
     },
     {
-      "path": "source/src/context_compression/p0_prompt.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p0_prompt.txt",
-      "source_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
-      "packaged_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/p1_prompt.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p1_prompt.txt",
-      "source_sha256": "02127d8bb4474267af03460a3fe2d90a2f1900bd948226176d742b9b39ffc091",
-      "packaged_sha256": "02127d8bb4474267af03460a3fe2d90a2f1900bd948226176d742b9b39ffc091",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/p_mini_prompt.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p_mini_prompt.txt",
-      "source_sha256": "7df2cc22bb5594dc41266c3db605114c53175de565939d8452410fb01236a390",
-      "packaged_sha256": "7df2cc22bb5594dc41266c3db605114c53175de565939d8452410fb01236a390",
-      "change": "byte-identical copy"
-    },
-    {
-      "path": "source/src/context_compression/p_neutral_prompt.txt",
-      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p_neutral_prompt.txt",
-      "source_sha256": "9cdd685a4b09b5ff51ca693965c05d82cefd0a0700dc8a1a6b39e5211b092d61",
-      "packaged_sha256": "9cdd685a4b09b5ff51ca693965c05d82cefd0a0700dc8a1a6b39e5211b092d61",
-      "change": "byte-identical copy"
-    },
-    {
       "path": "source/src/context_compression/prompts.py",
       "source": "WildClawBench ADyn frozen runtime/src/context_compression/prompts.py",
       "source_sha256": "2548c45b763ca6a6a4e283611c68bc91ae3bf22cac3329257f0173113844bfcb",
-      "packaged_sha256": "2548c45b763ca6a6a4e283611c68bc91ae3bf22cac3329257f0173113844bfcb",
-      "change": "byte-identical copy"
+      "packaged_sha256": "cdd58c62be72a0190a542a7d0d8ee219519c634f674ff9cc213ae6ee4e4d22d3",
+      "change": "Remove unused prompt imports and historical dispatch; only ADyn incremental/full construction is supported. ADyn payloads remain unchanged."
     },
     {
       "path": "source/src/context_compression/proxy.py",
@@ -291,29 +221,29 @@
       "path": "source/tests/context_compression/test_async_transport.py",
       "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_async_transport.py",
       "source_sha256": "8206f000ae87f05b57a43cdfa37c851cb15cadab4509357d154070f70822cbda",
-      "packaged_sha256": "8206f000ae87f05b57a43cdfa37c851cb15cadab4509357d154070f70822cbda",
-      "change": "byte-identical copy"
+      "packaged_sha256": "ccd3cfa835c914a2aba73a632c5163ccbaf37f42822f87e3e4a31773766827f1",
+      "change": "Adapt prompt-dependent fixtures and assertions to ADyn incremental/full; preserve transport, cancellation, audit and late-usage coverage."
     },
     {
       "path": "source/tests/context_compression/test_audit.py",
       "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_audit.py",
       "source_sha256": "794d817d0ba5e0a93a35c33c3c1cc69272b34f95f69cb32a34553b2219aaeb93",
-      "packaged_sha256": "794d817d0ba5e0a93a35c33c3c1cc69272b34f95f69cb32a34553b2219aaeb93",
-      "change": "byte-identical copy"
+      "packaged_sha256": "d967e6f49b15238d26c82379cdfad9154e39f65346450e6198352215ef87c386",
+      "change": "Adapt prompt-dependent fixtures and assertions to ADyn incremental/full; preserve transport, cancellation, audit and late-usage coverage."
     },
     {
       "path": "source/tests/context_compression/test_cancellation.py",
       "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_cancellation.py",
       "source_sha256": "25cd088fe52ce2caedcba7d6348368b4b21373477dd8d2b92df81a75649846fc",
-      "packaged_sha256": "25cd088fe52ce2caedcba7d6348368b4b21373477dd8d2b92df81a75649846fc",
-      "change": "byte-identical copy"
+      "packaged_sha256": "354e11230041fbe91c3916aab9ec41dd77fcc86c670958818be394ff7a2ce444",
+      "change": "Adapt prompt-dependent fixtures and assertions to ADyn incremental/full; preserve transport, cancellation, audit and late-usage coverage."
     },
     {
       "path": "source/tests/context_compression/test_core.py",
       "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_core.py",
       "source_sha256": "17c73b4325c71b18f721dd4018ab27295eff61723433f79e04e6834ae332aa3b",
-      "packaged_sha256": "01ad7b32d03013c9f4c142879046d09e2baf5eff5d74038dde56c29e2fa2b92e",
-      "change": "One archival v1 research-plan test is explicitly skipped; no ADyn runtime behavior test changed."
+      "packaged_sha256": "4a24c4a50f6d6b51727d725158bceba48e8b6a72bb3023bbe084af85cfbac0b6",
+      "change": "Remove the obsolete historical prompt archive test; controller behavior tests unchanged."
     },
     {
       "path": "source/tests/context_compression/test_dual_a_async.py",
@@ -333,8 +263,8 @@
       "path": "source/tests/context_compression/test_log_finalization.py",
       "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_log_finalization.py",
       "source_sha256": "6a8173ea249ef0324fb32d7f29d384c51f984291dd79db7a84eafdf75d55acaf",
-      "packaged_sha256": "6a8173ea249ef0324fb32d7f29d384c51f984291dd79db7a84eafdf75d55acaf",
-      "change": "byte-identical copy"
+      "packaged_sha256": "cb0001007f225bb5264fb3adb59245c157cb5efb2f7b45f6edd435a76dc29cd8",
+      "change": "Adapt prompt-dependent fixtures and assertions to ADyn incremental/full; preserve transport, cancellation, audit and late-usage coverage."
     },
     {
       "path": "source/tests/context_compression/test_safety.py",
@@ -347,8 +277,8 @@
       "path": "source/tests/context_compression/test_transport.py",
       "source": "WildClawBench ADyn frozen runtime/tests/context_compression/test_transport.py",
       "source_sha256": "106edb758ffbbacd4b746070c8285e6d9629b0138ebfb49ecb5475df4689b3bc",
-      "packaged_sha256": "87448912e193fb17e75b6d44c046ab6a31d93458893d320b4092de2048524cae",
-      "change": "One archival v1 research-plan test is explicitly skipped; no ADyn runtime behavior test changed."
+      "packaged_sha256": "3b1abb92504211cb52471efafab9800f5ed0a8bf3dfe105385ea08befc42d3f8",
+      "change": "Adapt prompt-dependent fixtures and assertions to ADyn incremental/full; preserve transport, cancellation, audit and late-usage coverage."
     },
     {
       "path": "source/tests/host_observation/fixed_clock.mjs",
@@ -380,7 +310,7 @@
     }
   ],
   "config_source": "compression and native_model fields from the original ADyn execution settings; no credentials or batch paths included",
-  "runtime_identity": "Copied runtime files match all three frozen sources used for the compared ADyn tasks.",
+  "runtime_identity": "Retained runtime files match the original frozen sources except prompts.py, which is restricted to ADyn after removing unused historical templates.",
   "packaging_files": [
     "run.py",
     "agent.py",
@@ -392,5 +322,67 @@
     "tests/container_smoke.py",
     "source/conftest.py"
   ],
-  "note": "Runtime source is unchanged; portable launcher replaces fixed batch paths and scheduling metadata."
+  "note": "ADyn templates, scheduling, compressor transport and history commits are unchanged. The prompt loader and prompt-dependent tests are streamlined; portable launcher replaces fixed batch paths and scheduling metadata.",
+  "omitted_source_files": [
+    {
+      "path": "source/src/context_compression/boundary_prompt_v1.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/boundary_prompt_v1.txt",
+      "source_sha256": "c7cc506724a50f5e2fe3108577552b4a074f78b440213774ec72ab588774e600",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/full_consolidation_prompt_v3.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/full_consolidation_prompt_v3.txt",
+      "source_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/incremental_boundary_prompt_v3.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/incremental_boundary_prompt_v3.txt",
+      "source_sha256": "5bc95930fa1ce19c438f01ac10575c03b600bb6f9cd3433833bdb7fddf8e4c8a",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/incremental_boundary_prompt_v4.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/incremental_boundary_prompt_v4.txt",
+      "source_sha256": "d1cfd1996196de7717667a78c702a5df0330836b0b4fafa36599d88bedb94bfd",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/joint_prompt_v1.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/joint_prompt_v1.txt",
+      "source_sha256": "4e78abbf4017876c63d042851b788a836a27cebf6390d9ec8120e2dec9f0fdb0",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/joint_prompt_v2.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/joint_prompt_v2.txt",
+      "source_sha256": "8ec7ab2468618d3fe6cfd33e4fe931f00095e27c7b3043bb8389d7faaea4946a",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/p0_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p0_prompt.txt",
+      "source_sha256": "a23aea901eb0b0818293fbe61514da60adb7855501ec5ead98945a9a64cda2ab",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/p1_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p1_prompt.txt",
+      "source_sha256": "02127d8bb4474267af03460a3fe2d90a2f1900bd948226176d742b9b39ffc091",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/p_mini_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p_mini_prompt.txt",
+      "source_sha256": "7df2cc22bb5594dc41266c3db605114c53175de565939d8452410fb01236a390",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    },
+    {
+      "path": "source/src/context_compression/p_neutral_prompt.txt",
+      "source": "WildClawBench ADyn frozen runtime/src/context_compression/p_neutral_prompt.txt",
+      "source_sha256": "9cdd685a4b09b5ff51ca693965c05d82cefd0a0700dc8a1a6b39e5211b092d61",
+      "reason": "Unused by ADyn; omitted from the published runtime."
+    }
+  ]
 }
